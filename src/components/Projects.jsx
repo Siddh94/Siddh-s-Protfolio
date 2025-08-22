@@ -17,6 +17,60 @@ const Projects = () => {
       demo: 'https://astrologycompatibilitytool.streamlit.app/',
       featured: true
     },
+    
+
+    {
+      id: 3,
+      title: 'Fraud Detection System using Machine Learning',
+      description: 'Built an end-to-end fraud detection pipeline on 10K+ transactions; applied preprocessing, feature engineering, and SMOTE for class imbalance. Achieved 99.82% ROC AUC and integrated SHAP-based interpretability for automated risk scoring.',
+      image: '/images/fraud-detection.png',
+      category: 'ai',
+      tech: ['Python', 'Scikit-learn', 'XGBoost', 'LightGBM', 'Random Forest', 'SHAP', 'SMOTE'],
+      github: 'https://github.com/Siddh94/-Fraud-Detection-System',
+      featured: true
+    },
+    {
+      id: 4,
+      title: 'Local AI Chatbot with Memory Management',
+      description: 'Developed a local chatbot using Python and Hugging Face Transformers (DistilGPT-2) with sliding-window memory to maintain context. Built modular CLI architecture with GPU acceleration and robust error handling.',
+      image: '/images/local-ai-chatbot.png',
+      category: 'ai',
+      tech: ['Python', 'PyTorch', 'Transformers', 'CLI', 'Memory Buffer', 'GPU Acceleration'],
+      github: 'https://github.com/Siddh94/Local-AI-Chatbot-with-Memory-Management',
+      featured: true
+    },
+    
+
+    {
+      id: 5,
+      title: 'Emergency & Mental Well-being Platform',
+      description: 'Developed an SOS platform with ReactJS + Spring Boot, supporting live location sharing. Reduced alert delivery latency by 40% with backend optimization.',
+      image: '/images/emergency-platform.png',
+      category: 'web',
+      tech: ['ReactJS', 'Spring Boot', 'MongoDB', 'Real-time', 'Location API'],
+      github: 'https://github.com/Siddh94',
+      featured: true
+    },
+    {
+      id: 6,
+      title: 'Helmet & Number Plate Detection',
+      description: 'Published research on traffic safety systems using YOLOv5. Built computer vision model for real-time detection and classification.',
+      image: '/images/helmet-detection.png',
+      category: 'ai',
+      tech: ['Python', 'YOLOv5', 'OpenCV', 'Computer Vision', 'Research'],
+      github: 'https://github.com/Siddh94',
+      featured: false
+    },
+    {
+      id: 7,
+      title: 'Android Quiz App',
+      description: 'Feature-rich quiz app built with Java/XML and Firebase Firestore. Includes user authentication, real-time scoring, and offline capabilities.',
+      image: '/images/quiz-app.png',
+      category: 'mobile',
+      tech: ['Java', 'Android', 'Firebase', 'XML', 'Real-time'],
+      github: 'https://github.com/Siddh94',
+      featured: false
+    },
     {
       id: 2,
       title: 'User-Centric Product Recommendation System',
@@ -25,42 +79,9 @@ const Projects = () => {
       category: 'ai',
       tech: ['Python', 'Flask', 'Collaborative Filtering', 'NumPy', 'TensorFlow'],
       github: 'https://github.com/Siddh94',
-      demo: 'https://github.com/Siddh94',
       featured: true
     },
-    {
-      id: 3,
-      title: 'Emergency & Mental Well-being Platform',
-      description: 'Developed an SOS platform with ReactJS + Spring Boot, supporting live location sharing. Reduced alert delivery latency by 40% with backend optimization.',
-      image: '/images/emergency-platform.png',
-      category: 'web',
-      tech: ['ReactJS', 'Spring Boot', 'MongoDB', 'Real-time', 'Location API'],
-      github: 'https://github.com/Siddh94',
-      demo: 'https://github.com/Siddh94',
-      featured: true
-    },
-    {
-      id: 4,
-      title: 'Helmet & Number Plate Detection',
-      description: 'Published research on traffic safety systems using YOLOv5. Built computer vision model for real-time detection and classification.',
-      image: '/images/helmet-detection.png',
-      category: 'ai',
-      tech: ['Python', 'YOLOv5', 'OpenCV', 'Computer Vision', 'Research'],
-      github: 'https://github.com/Siddh94',
-      demo: 'https://github.com/Siddh94',
-      featured: false
-    },
-    {
-      id: 5,
-      title: 'Android Quiz App',
-      description: 'Feature-rich quiz app built with Java/XML and Firebase Firestore. Includes user authentication, real-time scoring, and offline capabilities.',
-      image: '/images/quiz-app.png',
-      category: 'mobile',
-      tech: ['Java', 'Android', 'Firebase', 'XML', 'Real-time'],
-      github: 'https://github.com/Siddh94',
-      demo: 'https://github.com/Siddh94',
-      featured: false
-    },
+
     
   ]
 
