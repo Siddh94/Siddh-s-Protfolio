@@ -69,7 +69,7 @@ const Hero = () => {
                                                            className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
             >
                              <motion.a 
-                 href="https://drive.google.com/file/d/1-BXMQlB2Q2ezevasn0yrjIWPOKwegcyn/view?usp=sharing" 
+                 href="https://drive.google.com/file/d/1RvjU0vcM-v6W6XjcnvJI8F08BZ4WaQV6/view?usp=sharing" 
                  target="_blank" 
                  rel="noopener noreferrer"
                  className="btn-primary inline-flex items-center relative overflow-hidden group"
