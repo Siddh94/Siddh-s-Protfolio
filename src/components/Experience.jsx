@@ -7,22 +7,22 @@ const Experience = () => {
     {
       id: 1,
       type: 'work',
+      title: 'Software Developer Intern',
+      company: 'Qvolv Technologies',
+      location: 'Noida, UP',
+      period: 'Aug 2025 - Present',
+      description: '',
+      skills: ['']
+    },
+    {
+      id: 2,
+      type: 'work',
       title: 'AI/ML Research',
       company: 'Self-Research Projects',
       location: 'Remote',
       period: '2023 - 2025',
       description: 'Conducted research on traffic safety systems using YOLOv5, published research paper. Developed AI tools for astrology compatibility and product recommendations.',
       skills: ['Python', 'YOLOv5', 'OpenCV', 'NLP', 'Research']
-    },
-    {
-      id: 2,
-      type: 'work',
-      title: 'Full Stack Developer',
-      company: 'Personal Projects',
-      location: 'Remote',
-      period: '2022 - 2024',
-      description: 'Built emergency mental well-being platform with ReactJS + Spring Boot, Android quiz app with Java/XML, and various AI-powered applications.',
-      skills: ['ReactJS', 'Spring Boot', 'Java', 'Android', 'MongoDB']
     },
     
   ]

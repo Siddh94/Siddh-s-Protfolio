@@ -48,7 +48,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-6"
             >
-                             AI/ML Engineer & Full Stack Developer
+                            Software Developer &  AI/ML Engineer 
             </motion.h2>
             
             <motion.p
