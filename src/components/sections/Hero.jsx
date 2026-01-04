@@ -88,8 +88,8 @@ const Hero = () => {
       <div className="particle particle-4"></div>
       <div className="particle particle-5"></div>
 
-      {/* Main Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"></div>
+      {/* Main Background - semi-transparent in dark mode for Matrix Rain */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-purple-50 dark:from-gray-900/80 dark:via-gray-800/80 dark:to-gray-900/80"></div>
 
       <div className="container-custom section-padding relative z-10">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">

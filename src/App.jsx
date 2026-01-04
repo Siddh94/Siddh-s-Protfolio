@@ -1,8 +1,154 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Navbar, Footer } from './components/layout'
 import { Hero, About, Projects, Experience, Skills, Contact } from './components/sections'
-import { DarkModeProvider } from './context/DarkModeContext'
+import { DarkModeProvider, useDarkMode } from './context/DarkModeContext'
 import { motion, AnimatePresence } from 'framer-motion'
+
+// Matrix Rain Effect Component (Dark Mode Only)
+const MatrixRain = () => {
+  const canvasRef = useRef(null)
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext('2d')
+    canvas.width = window.innerWidth
+    canvas.height = document.documentElement.scrollHeight
+
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()アイウエオカキクケコサシスセソ'
+    const fontSize = 16
+    const columns = canvas.width / fontSize
+    const drops = Array(Math.floor(columns)).fill(1)
+
+    const draw = () => {
+      ctx.fillStyle = 'rgba(17, 24, 39, 0.1)' // Dark gray for trail
+      ctx.fillRect(0, 0, canvas.width, canvas.height)
+      ctx.fillStyle = '#8b5cf6' // Bright purple
+      ctx.font = `${fontSize}px monospace`
+
+      drops.forEach((y, i) => {
+        const char = chars[Math.floor(Math.random() * chars.length)]
+        ctx.fillText(char, i * fontSize, y * fontSize)
+        if (y * fontSize > canvas.height && Math.random() > 0.98) {
+          drops[i] = 0
+        }
+        drops[i]++
+      })
+    }
+
+    const interval = setInterval(draw, 40)
+    const handleResize = () => {
+      canvas.width = window.innerWidth
+      canvas.height = document.documentElement.scrollHeight
+    }
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      clearInterval(interval)
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
+
+  return (
+    <canvas
+      ref={canvasRef}
+      className="fixed inset-0 pointer-events-none z-[15]"
+      style={{ opacity: 0.25, mixBlendMode: 'screen' }}
+    />
+  )
+}
+
+// Matrix Rain Wrapper (only renders in dark mode)
+const MatrixRainWrapper = () => {
+  const { isDarkMode } = useDarkMode()
+  if (!isDarkMode) return null
+  return <MatrixRain />
+}
+
+// Custom SY Loader Component
+const SYLoader = ({ timeGreeting, funFact }) => (
+  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+    {/* Animated Background */}
+    <div className="absolute inset-0 opacity-20">
+      {[...Array(20)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-2 h-2 bg-primary-500 rounded-full"
+          initial={{
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight
+          }}
+          animate={{
+            y: [0, -20, 0],
+            opacity: [0.5, 1, 0.5]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            delay: Math.random() * 2
+          }}
+        />
+      ))}
+    </div>
+
+    <div className="text-center relative z-10">
+      {/* SY Initials Animation */}
+      <motion.div
+        initial={{ scale: 0, rotate: -180 }}
+        animate={{ scale: 1, rotate: 0 }}
+        transition={{ type: "spring", duration: 1 }}
+        className="relative w-24 h-24 mx-auto mb-6"
+      >
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 rounded-full border-4 border-t-primary-600 border-r-purple-600 border-b-primary-400 border-l-transparent"
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.span
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-3xl font-bold gradient-text"
+          >
+            SY
+          </motion.span>
+        </div>
+      </motion.div>
+
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="text-xl font-semibold text-primary-600 mb-2"
+      >
+        Loading Portfolio...
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className="text-gray-500 dark:text-gray-400 text-sm mb-4"
+      >
+        {timeGreeting.emoji} {timeGreeting.greeting}!
+      </motion.p>
+
+      {/* Fun Fact */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.7 }}
+        className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm px-6 py-3 rounded-full max-w-sm mx-auto"
+      >
+        <p className="text-sm text-gray-600 dark:text-gray-300">
+          💡 <span className="font-medium">Fun Fact:</span> {funFact}
+        </p>
+      </motion.div>
+    </div>
+  </div>
+)
 
 // Konami Code Easter Egg Component
 const KonamiEasterEgg = () => {
@@ -18,7 +164,6 @@ const KonamiEasterEgg = () => {
       if (newSequence.join(',') === konamiCode.join(',')) {
         setShowEasterEgg(true)
         setInputSequence([])
-        // Auto hide after 5 seconds
         setTimeout(() => setShowEasterEgg(false), 5000)
       }
     }
@@ -37,16 +182,10 @@ const KonamiEasterEgg = () => {
         exit={{ opacity: 0, scale: 0.5 }}
         className="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none"
       >
-        {/* Confetti Effect */}
         {[...Array(50)].map((_, i) => (
           <motion.div
             key={i}
-            initial={{
-              opacity: 1,
-              x: 0,
-              y: 0,
-              scale: 1
-            }}
+            initial={{ opacity: 1, x: 0, y: 0, scale: 1 }}
             animate={{
               opacity: 0,
               x: (Math.random() - 0.5) * 600,
@@ -62,7 +201,6 @@ const KonamiEasterEgg = () => {
           />
         ))}
 
-        {/* Easter Egg Message */}
         <motion.div
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -77,15 +215,87 @@ const KonamiEasterEgg = () => {
             🎮
           </motion.div>
           <h3 className="text-2xl font-bold mb-2">You Found the Secret! 🎉</h3>
-          <p className="text-primary-100 mb-2">
-            Konami code activated!
-          </p>
+          <p className="text-primary-100 mb-2">Konami code activated!</p>
           <p className="text-sm text-primary-200">
             You clearly know your way around code. Let's build something together!
           </p>
         </motion.div>
       </motion.div>
     </AnimatePresence>
+  )
+}
+
+// Time Spent Tracker Component
+const TimeSpentTracker = () => {
+  const [seconds, setSeconds] = useState(0)
+  const [showMessage, setShowMessage] = useState(false)
+
+  useEffect(() => {
+    const timer = setInterval(() => setSeconds(s => s + 1), 1000)
+    return () => clearInterval(timer)
+  }, [])
+
+  useEffect(() => {
+    if (seconds === 60) setShowMessage(true) // Show after 1 min
+    if (seconds === 120) setShowMessage(true) // Show again at 2 mins
+  }, [seconds])
+
+  const formatTime = (s) => {
+    const mins = Math.floor(s / 60)
+    const secs = s % 60
+    if (mins === 0) return `${secs}s`
+    return `${mins}m ${secs}s`
+  }
+
+  return (
+    <>
+      {/* Floating time tracker */}
+      <motion.div
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 2 }}
+        className="fixed bottom-4 right-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg text-sm z-40 hidden md:block"
+      >
+        <span className="text-gray-500 dark:text-gray-400">⏱️ </span>
+        <span className="text-gray-700 dark:text-gray-300">{formatTime(seconds)}</span>
+        {seconds >= 60 && (
+          <span className="text-primary-600 dark:text-primary-400 ml-2">
+            Ready to chat? 💬
+          </span>
+        )}
+      </motion.div>
+    </>
+  )
+}
+
+// Visit Counter (using localStorage for simulation)
+const VisitCounter = () => {
+  const [visits, setVisits] = useState(0)
+  const hasRun = useRef(false)
+
+  useEffect(() => {
+    // Prevent double-increment from React Strict Mode
+    if (hasRun.current) return
+    hasRun.current = true
+
+    const storedVisits = parseInt(localStorage.getItem('portfolio_visits') || '0')
+    const newVisits = storedVisits + 1
+    localStorage.setItem('portfolio_visits', newVisits.toString())
+    setVisits(newVisits)
+  }, [])
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 1.5 }}
+      className="fixed bottom-4 left-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md px-4 py-2 rounded-full shadow-lg text-sm z-40 hidden md:block"
+    >
+      <span className="text-primary-600 dark:text-primary-400">👋 </span>
+      <span className="text-gray-700 dark:text-gray-300">
+        Visitor #{visits.toLocaleString()} - Thanks for stopping by!
+      </span>
+    </motion.div>
   )
 }
 
@@ -135,48 +345,50 @@ const getTimeGreeting = () => {
   return { greeting: "Late night coding", emoji: "🌙" }
 }
 
-function App() {
-  console.log('App component rendering...')
+// Fun Facts
+const funFacts = [
+  "I've solved 130+ problems on LeetCode 🧩",
+  "I founded 2 startups before graduating 🚀",
+  "I'm an NCC Cadet (Naval Wing) ⚓",
+  "I won Gold in Regional Kabaddi Tournament 🥇",
+  "I've published research on YOLOv5 📄",
+  "I can build a full-stack app in 48 hours ⚡",
+  "I love late-night coding sessions 🌙",
+  "Coffee + Code = My daily fuel ☕"
+]
 
+function App() {
   const [isLoading, setIsLoading] = useState(true)
   const timeGreeting = getTimeGreeting()
+  const [funFact] = useState(funFacts[Math.floor(Math.random() * funFacts.length)])
 
   useEffect(() => {
-    console.log('App useEffect running...')
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      console.log('Setting loading to false...')
-      setIsLoading(false)
-    }, 1000)
-
+    const timer = setTimeout(() => setIsLoading(false), 2000)
     return () => clearTimeout(timer)
   }, [])
 
   if (isLoading) {
-    console.log('Showing loading screen...')
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-purple-50 dark:from-gray-900 dark:to-gray-800">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary-600 mx-auto mb-4"></div>
-          <h2 className="text-xl font-semibold text-primary-600">Loading Portfolio...</h2>
-          <p className="text-gray-500 dark:text-gray-400 mt-2 text-sm">
-            {timeGreeting.emoji} {timeGreeting.greeting}!
-          </p>
-        </div>
-      </div>
-    )
+    return <SYLoader timeGreeting={timeGreeting} funFact={funFact} />
   }
 
-  console.log('Rendering main portfolio...')
   return (
     <ErrorBoundary>
       <DarkModeProvider>
-        <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+        <div className="min-h-screen transition-colors duration-300 relative">
+          {/* Matrix Rain (Dark Mode Only) */}
+          <MatrixRainWrapper />
+
           {/* Konami Code Easter Egg */}
           <KonamiEasterEgg />
 
+          {/* Time Spent Tracker */}
+          <TimeSpentTracker />
+
+          {/* Visit Counter */}
+          <VisitCounter />
+
           <Navbar />
-          <main>
+          <main className="relative z-10">
             <Hero />
             <About />
             <Projects />
