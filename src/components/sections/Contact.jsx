@@ -45,7 +45,7 @@ const Contact = () => {
             Get In <span className="gradient-text">Touch</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            I'm always interested in hearing about new opportunities and exciting projects. 
+            I'm always interested in hearing about new opportunities and exciting projects.
             Let's discuss how we can work together!
           </p>
         </motion.div>
@@ -119,16 +119,17 @@ const Contact = () => {
             {/* Additional Info */}
             <div className="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6">
               <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                Let's work together!
+                Let's Build Something Together! 🚀
               </h4>
-                             <p className="text-gray-600 dark:text-gray-400 mb-4">
-                                   I'm actively seeking an AI/ML Engineer role to advance user engagement models using LLMs. 
-                  Whether you have a research opportunity or want to discuss AI/ML projects, I'd love to connect!
-               </p>
-               <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
-                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                                   <span>Available for AI/ML Engineer roles</span>
-               </div>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Whether you need a full-stack developer, an AI/ML engineer, or someone to bring your startup idea to life,
+                I'm ready to dive in and deliver results. From founding Roviraa to building AI products at AnacodicAI,
+                I've proven I can learn fast and execute.
+              </p>
+              <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span>Available for Full-Time & Contract Opportunities</span>
+              </div>
             </div>
           </motion.div>
         </div>

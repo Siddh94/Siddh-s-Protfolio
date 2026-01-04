@@ -1,73 +1,99 @@
-import React from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { FaCode, FaTools, FaDatabase, FaCloud, FaMobile, FaPalette } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import { motion, useInView } from 'framer-motion'
 
 const Skills = () => {
   const skillCategories = [
     {
-      id: 'ai',
-      title: 'AI/ML & Deep Learning',
-      icon: FaCode,
+      id: 'frontend',
+      title: 'Frontend',
+      icon: FaPalette,
       skills: [
-        { name: 'Python', level: 80 },
-        { name: 'TensorFlow', level: 80 },
-        { name: 'Scikit-learn', level: 70 },
-        { name: 'Pandas/NumPy', level: 70 },
-        { name: 'Hugging Face', level: 70 },
-        { name: 'OpenCV', level: 70 }
+        { name: 'React.js', level: 85 },
+        { name: 'Next.js', level: 80 },
+        { name: 'TypeScript', level: 75 },
+        { name: 'TailwindCSS', level: 85 },
+        { name: 'HTML/CSS/JS', level: 90 },
+        { name: 'Material-UI', level: 75 }
       ]
     },
     {
       id: 'backend',
-      title: 'Backend & Development',
+      title: 'Backend',
       icon: FaTools,
       skills: [
-        { name: 'Java', level: 80 },
-        { name: 'Spring Boot', level: 70 },
-        { name: 'Flask', level: 70 },
-        { name: 'REST APIs', level: 80 },
-        { name: 'Docker', level: 70 },
-        { name: 'Git/GitHub', level: 80 }
+        { name: 'Node.js', level: 80 },
+        { name: 'Express.js', level: 80 },
+        { name: 'Python', level: 85 },
+        { name: 'Flask', level: 75 },
+        { name: 'REST APIs', level: 85 },
+        { name: 'Prisma', level: 75 }
+      ]
+    },
+    {
+      id: 'ai',
+      title: 'AI/ML',
+      icon: FaCode,
+      skills: [
+        { name: 'TensorFlow', level: 80 },
+        { name: 'Scikit-learn', level: 80 },
+        { name: 'NLP', level: 85 },
+        { name: 'Computer Vision', level: 75 },
+        { name: 'Hugging Face', level: 70 },
+        { name: 'OpenCV', level: 75 }
       ]
     },
     {
       id: 'database',
-      title: 'Database & Cloud',
+      title: 'Database',
       icon: FaDatabase,
       skills: [
-        { name: 'MongoDB', level: 70 },
-        { name: 'MySQL', level: 70 },
-        { name: 'Firebase', level: 75 },
+        { name: 'MySQL', level: 85 },
+        { name: 'MongoDB', level: 75 },
+        { name: 'PostgreSQL', level: 70 },
+        { name: 'Firebase', level: 75 }
+      ]
+    },
+    {
+      id: 'tools',
+      title: 'Tools & DevOps',
+      icon: FaCloud,
+      skills: [
+        { name: 'Git/GitHub', level: 90 },
+        { name: 'Docker', level: 70 },
+        { name: 'Vercel', level: 85 },
         { name: 'AWS S3', level: 70 },
-        { name: 'CSV Processing', level: 80 },
-        { name: 'Postman', level: 70 }
-      ]
-    },
-    {
-      id: 'mobile',
-      title: 'Mobile & Frontend',
-      icon: FaMobile,
-      skills: [
-        { name: 'Android Development', level: 80 },
-        { name: 'ReactJS', level: 75 },
-        { name: 'Java/XML', level: 80 },
-        { name: 'HTML/CSS/JS', level: 80 }
-      ]
-    },
-    {
-      id: 'specializations',
-      title: 'Specializations',
-      icon: FaPalette,
-      skills: [
-        { name: 'NLP', level: 90 },
-        { name: 'Recommendation Systems', level: 80 },
-        { name: 'LLM Fine-tuning', level: 75 },
-        { name: 'Computer Vision', level: 75 },
-        { name: 'Data Preprocessing', level: 80 },
-        { name: 'Model Evaluation', level: 80 }
+        { name: 'Postman', level: 85 },
+        { name: 'VS Code', level: 90 }
       ]
     }
   ]
+
+  // Counter component for skill percentages
+  const Counter = ({ target, duration = 1.5 }) => {
+    const [count, setCount] = useState(0)
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true })
+
+    useEffect(() => {
+      if (isInView) {
+        let start = 0
+        const increment = target / (duration * 60)
+        const timer = setInterval(() => {
+          start += increment
+          if (start >= target) {
+            setCount(target)
+            clearInterval(timer)
+          } else {
+            setCount(Math.floor(start))
+          }
+        }, 1000 / 60)
+        return () => clearInterval(timer)
+      }
+    }, [isInView, target, duration])
+
+    return <span ref={ref}>{count}%</span>
+  }
 
   const ProgressBar = ({ skill, delay }) => (
     <motion.div
@@ -81,8 +107,8 @@ const Skills = () => {
         <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
           {skill.name}
         </span>
-        <span className="text-sm text-gray-500 dark:text-gray-400">
-          {skill.level}%
+        <span className="text-sm text-primary-600 dark:text-primary-400 font-semibold">
+          <Counter target={skill.level} />
         </span>
       </div>
       <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
@@ -111,7 +137,7 @@ const Skills = () => {
             My <span className="gradient-text">Skills</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            A comprehensive overview of my technical skills and expertise across various 
+            A comprehensive overview of my technical skills and expertise across various
             technologies and development domains.
           </p>
         </motion.div>
@@ -163,7 +189,7 @@ const Skills = () => {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-8">
               Other Skills & Technologies
             </h3>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 'REST APIs', 'GraphQL', 'Microservices', 'CI/CD',
@@ -201,17 +227,17 @@ const Skills = () => {
               Always Learning & Growing
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
-              Technology evolves rapidly, and I'm committed to staying current with the latest 
+              Technology evolves rapidly, and I'm committed to staying current with the latest
               trends and best practices. Currently exploring new technologies and frameworks.
             </p>
-                         <div className="flex flex-wrap justify-center gap-4">
-               <span className="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">
-                 Currently Learning: Advanced LLM Applications
-               </span>
-               <span className="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">
-                 Exploring: AI/ML Engineer Opportunities
-               </span>
-             </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <span className="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">
+                Currently Learning: Advanced LLM Applications
+              </span>
+              <span className="px-4 py-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-full text-sm font-medium">
+                Exploring: AI/ML Engineer Opportunities
+              </span>
+            </div>
           </div>
         </motion.div>
       </div>

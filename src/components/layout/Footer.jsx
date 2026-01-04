@@ -24,11 +24,11 @@ const Footer = () => {
           <div className="grid md:grid-cols-3 gap-8 mb-8">
             {/* Brand Section */}
             <div className="text-center md:text-left">
-              <h3 className="text-2xl font-bold gradient-text mb-4">Portfolio</h3>
-                             <p className="text-gray-400 mb-4 max-w-xs">
-                 A Computer Science Engineering graduate specializing in Deep Learning, NLP, and Recommendation Systems. 
-                 Passionate about advancing AI research and building intelligent solutions.
-               </p>
+              <h3 className="text-2xl font-bold gradient-text mb-4">Siddh Yadav</h3>
+              <p className="text-gray-400 mb-4 max-w-xs">
+                Full-Stack Developer & AI/ML Engineer. Building intelligent, production-ready solutions
+                from database to deployment. Let's build something amazing together.
+              </p>
               <div className="flex justify-center md:justify-start space-x-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
@@ -80,11 +80,11 @@ const Footer = () => {
             {/* Contact Info */}
             <div className="text-center md:text-left">
               <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-                             <div className="space-y-2 text-gray-400">
-                 <p>siddhyadav7464@gmail.com</p>
-                 <p>+91 7023471442</p>
-                 <p>Delhi, India</p>
-               </div>
+              <div className="space-y-2 text-gray-400">
+                <p>siddhyadav7464@gmail.com</p>
+                <p>+91 7023471442</p>
+                <p>Delhi, India</p>
+              </div>
             </div>
           </div>
 
@@ -99,9 +99,9 @@ const Footer = () => {
                 viewport={{ once: true }}
                 className="text-center md:text-left text-gray-400"
               >
-                                 <p>
-                   © {new Date().getFullYear()} Siddh Yadav. All rights reserved using React & TailwindCSS
-                 </p>
+                <p>
+                  © {new Date().getFullYear()} Siddh Yadav. All rights reserved using React & TailwindCSS
+                </p>
               </motion.div>
 
               {/* Back to Top Button */}
