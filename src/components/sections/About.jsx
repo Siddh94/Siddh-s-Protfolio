@@ -1,6 +1,93 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { FaDownload, FaCode, FaPalette, FaRocket } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+
+// Coding Typer Component
+const CodingTyper = () => {
+  const [text, setText] = useState('')
+  const [cursorVisible, setCursorVisible] = useState(true)
+
+  const codeSnippet = `
+class AI_Engineer:
+    def __init__(self):
+        self.name = "Siddh Yadav"
+        self.skills = ["Python", "TensorFlow", "React"]
+        self.passion = "Building Intelligent Systems"
+
+    def solve_problem(self, challenge):
+        # Analyzing requirements...
+        solution = self.deploy_scalable_app(challenge)
+        return solution
+
+    def deploy_scalable_app(self, idea):
+        return "🚀 Production Ready MVP"
+
+me = AI_Engineer()
+print(me.solve_problem("Complex Real-World Issue"))
+# Output: 🚀 Production Ready MVP
+`
+
+  useEffect(() => {
+    let i = 0
+    const timer = setInterval(() => {
+      setText(codeSnippet.substring(0, i))
+      i++
+      if (i > codeSnippet.length) {
+        // Reset animation after a long pause
+        setTimeout(() => { i = 0 }, 5000)
+      }
+    }, 50) // Typing speed
+
+    const cursorTimer = setInterval(() => {
+      setCursorVisible(v => !v)
+    }, 500)
+
+    return () => {
+      clearInterval(timer)
+      clearInterval(cursorTimer)
+    }
+  }, [])
+
+  return (
+    <div className="bg-[#1e1e1e] rounded-lg shadow-2xl overflow-hidden font-mono text-sm md:text-base border border-gray-700 w-full max-w-lg mx-auto transform rotate-1 hover:rotate-0 transition-transform duration-300">
+      {/* VS Code Header */}
+      <div className="bg-[#2d2d2d] px-4 py-2 flex items-center gap-2 border-b border-gray-700">
+        <div className="flex gap-2">
+          <div className="w-3 h-3 rounded-full bg-red-500" />
+          <div className="w-3 h-3 rounded-full bg-yellow-500" />
+          <div className="w-3 h-3 rounded-full bg-green-500" />
+        </div>
+        <span className="ml-4 text-gray-400 text-xs">siddh_portfolio.py</span>
+      </div>
+
+      {/* Code Area */}
+      <div className="p-4 overflow-x-auto">
+        <pre className="text-gray-300">
+          <code>
+            {text.split('\n').map((line, i) => (
+              <div key={i} className="table-row">
+                <span className="table-cell text-gray-600 text-right pr-4 select-none w-8">{i + 1}</span>
+                <span className="table-cell">
+                  <span dangerouslySetInnerHTML={{
+                    __html: line
+                      .replace(/class /g, '<span class="text-blue-400">class </span>')
+                      .replace(/def /g, '<span class="text-blue-400">def </span>')
+                      .replace(/self/g, '<span class="text-orange-400">self</span>')
+                      .replace(/return /g, '<span class="text-purple-400">return </span>')
+                      .replace(/import /g, '<span class="text-purple-400">import </span>')
+                      .replace(/"(.*?)"/g, '<span class="text-green-400">"$1"</span>')
+                      .replace(/# (.*)/g, '<span class="text-gray-500"># $1</span>')
+                  }} />
+                  {i === text.split('\n').length - 1 && cursorVisible && <span className="inline-block w-2.5 h-4 bg-blue-400 ml-1 align-middle opacity-75"></span>}
+                </span>
+              </div>
+            ))}
+          </code>
+        </pre>
+      </div>
+    </div>
+  )
+}
 
 const About = () => {
   const features = [
@@ -46,6 +133,7 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="order-2 lg:order-1"
           >
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
               Who I Am
@@ -82,38 +170,49 @@ const About = () => {
             </div>
           </motion.div>
 
-          {/* Right Content - Features */}
+          {/* Right Content - Coding Typer */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="order-1 lg:order-2 flex justify-center"
           >
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="flex items-start space-x-4 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300"
-              >
-                <div className="flex-shrink-0 w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
-                  <feature.icon className="w-6 h-6 text-primary-600 dark:text-primary-400" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
-                    {feature.title}
-                  </h4>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    {feature.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
+            <CodingTyper />
           </motion.div>
         </div>
+
+        {/* Features Grid */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="grid md:grid-cols-3 gap-6 mt-16"
+        >
+          {features.map((feature, index) => (
+            <motion.div
+              key={feature.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="flex flex-col items-center text-center space-y-4 p-6 bg-gray-50 dark:bg-gray-800 rounded-xl hover:shadow-lg transition-all duration-300"
+            >
+              <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900 rounded-full flex items-center justify-center mb-2">
+                <feature.icon className="w-8 h-8 text-primary-600 dark:text-primary-400" />
+              </div>
+              <div>
+                <h4 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                  {feature.title}
+                </h4>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  {feature.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
 
         {/* Certifications & Achievements */}
         <motion.div

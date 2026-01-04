@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Navbar, Footer } from './components/layout'
 import { Hero, About, Projects, Experience, Skills, Contact } from './components/sections'
 import { DarkModeProvider, useDarkMode } from './context/DarkModeContext'
+import GitHubGlobe from './components/sections/GitHubGlobe'
 import { motion, AnimatePresence } from 'framer-motion'
 
 // Matrix Rain Effect Component (Dark Mode Only)
@@ -394,6 +395,7 @@ function App() {
             <Projects />
             <Experience />
             <Skills />
+            <GitHubGlobe />
             <Contact />
           </main>
           <Footer />

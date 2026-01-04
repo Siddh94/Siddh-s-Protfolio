@@ -1,204 +1,228 @@
-import React from 'react'
-import { FaBriefcase, FaGraduationCap, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
+import { FaFolderOpen, FaJs, FaReact, FaMarkdown, FaFileCode, FaColumns, FaCog, FaCopy } from 'react-icons/fa'
 
-const Experience = () => {
-  const experience = [
-    {
-      id: 1,
-      type: 'work',
-      title: 'Founder & Full-Stack Developer',
-      company: 'Roviraa',
-      location: 'Delhi, India',
-      period: 'Dec 2025 - Present',
-      description: 'Founded an e-commerce startup addressing the gap in pure, unadulterated products market. Architected and built the entire platform from scratch—designing database schemas with Prisma/MySQL, implementing RESTful APIs with Node.js, and crafting a responsive Next.js frontend. Delivered key features including real-time wishlist sync, dynamic product catalog, and optimized image loading. Managed end-to-end product lifecycle from market research to deployment.',
-      skills: ['Next.js', 'Node.js', 'MySQL', 'Prisma', 'TailwindCSS', 'TypeScript', 'Vercel', 'REST APIs']
-    },
-    {
-      id: 2,
-      type: 'work',
-      title: 'Software Developer Intern',
-      company: 'Qvolv Technologies',
-      location: 'Noida, UP',
-      period: 'Aug 2025 - Present',
-      description: 'Contributing to Qvolv Platform, a full-stack multi-tenant educational management system for schools, colleges, and universities. Worked extensively on MySQL database design—creating and optimizing tables, relationships, and queries. Built React.js features for dashboards, content management, and role-based views. Integrated LMS modules with multimedia support and responsive design using Material-UI.',
-      skills: ['React.js', 'MySQL', 'Material-UI', 'Node.js', 'REST APIs', 'Multi-tenant Architecture']
-    },
-    {
-      id: 3,
-      type: 'work',
-      title: 'AI/ML Software Developer',
-      company: 'AnacodicAI',
-      location: 'Remote',
-      period: '2024 - 2025',
-      description: 'Co-founded AnacodicAI with a 6-member team, building a platform showcasing AI automation products including BoozeBuddy, Feedback AI, Pharmacy Assistant, and AstroAI. Built full-stack web application using React, TypeScript, Tailwind CSS, and MySQL. Developed AstroAI (Astrology Compatibility Tool) using Python, Streamlit, and Google APIs. Implemented interactive dashboards, AI chat interfaces, and real-time routing. Managed database schemas and API endpoints for authentication and business logic.',
-      skills: ['React', 'TypeScript', 'Python', 'Streamlit', 'MySQL', 'Tailwind CSS', 'Node.js', 'Vite']
-    },
-    {
-      id: 4,
-      type: 'work',
-      title: 'AI/ML Research',
-      company: 'Self-Research Projects',
-      location: 'Remote',
-      period: '2023 - 2025',
-      description: 'Conducted research on traffic safety systems using YOLOv5, published research paper. Developed AI tools for astrology compatibility and product recommendations.',
-      skills: ['Python', 'YOLOv5', 'OpenCV', 'NLP', 'Research']
-    },
+const IDEExperience = () => {
+  const [activeFile, setActiveFile] = useState('experience.json')
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true)
 
+  const experienceData = [
+    {
+      "id": 1,
+      "role": "Founder & Full-Stack Developer",
+      "company": "Roviraa",
+      "period": "Dec 2025 - Present",
+      "stack": ["Next.js", "MySQL", "Prisma", "TypeScript"],
+      "highlights": [
+        "Architected e-commerce platform from scratch",
+        "Designed database schemas & REST APIs",
+        "Implemented real-time wishlist & diverse catalog"
+      ]
+    },
+    {
+      "id": 2,
+      "role": "Software Developer Intern",
+      "company": "Qvolv Technologies",
+      "period": "Aug 2025 - Present",
+      "stack": ["React.js", "Material-UI", "Multi-tenant Arch"],
+      "highlights": [
+        "Built full-stack ed-tech management features",
+        "Optimized complex SQL queries",
+        "Integrated multimedia LMS modules"
+      ]
+    },
+    {
+      "id": 3,
+      "role": "AI/ML Developer",
+      "company": "AnacodicAI",
+      "period": "2024 - 2025",
+      "stack": ["Python", "Streamlit", "React", "OpenCV"],
+      "highlights": [
+        "Co-founded AI automation platform",
+        "Built AstroAI & Feedback AI tools",
+        "Managed 6-member engineering team"
+      ]
+    }
   ]
 
-  const education = [
+  const educationData = [
     {
-      id: 1,
-      type: 'education',
-      title: 'Bachelor of Computer Science Engineering',
-      company: 'Chandigarh University',
-      location: 'Mohali, India',
-      period: '2021 - 2025',
-      description: 'Specialized in Deep Learning, NLP, and Recommendation Systems. CGPA: 7.26. Published research paper on traffic safety systems.',
-      skills: ['Computer Science', 'Deep Learning', 'NLP', 'Research', 'AI/ML']
+      "degree": "B.Tech Computer Science",
+      "institution": "Chandigarh University",
+      "period": "2021 - 2025",
+      "gpa": 7.26,
+      "specialization": ["Deep Learning", "NLP", "AI Systems"]
     },
-
+    {
+      "paper": "Traffic Safety using YOLOv5",
+      "status": "Published",
+      "domain": "Computer Vision"
+    }
   ]
 
-  const allItems = [...experience, ...education].sort((a, b) => {
-    const aYear = parseInt(a.period.split(' ')[0])
-    const bYear = parseInt(b.period.split(' ')[0])
-    return bYear - aYear
-  })
+  const files = [
+    { name: 'experience.json', icon: <FaFileCode className="text-yellow-400" />, content: experienceData },
+    { name: 'education.json', icon: <FaFileCode className="text-yellow-400" />, content: educationData },
+    { name: 'README.md', icon: <FaMarkdown className="text-blue-400" />, type: 'markdown' }
+  ]
+
+  const renderContent = () => {
+    if (activeFile === 'README.md') {
+      return (
+        <div className="text-gray-300 font-sans p-4 leading-relaxed">
+          <h1 className="text-2xl font-bold text-blue-400 mb-4"># Career Overview</h1>
+          <p className="mb-4">
+            Welcome to my interactive resume! <br />
+            Navigate through the JSON files to inspect my raw data.
+          </p>
+          <p>
+            <span className="text-purple-400">const</span> <span className="text-blue-300">goal</span> = <span className="text-green-300">"Build intelligent, scalable systems"</span>;
+          </p>
+        </div>
+      )
+    }
+
+    const data = files.find(f => f.name === activeFile)?.content
+    const jsonString = JSON.stringify(data, null, 2)
+
+    return (
+      <div className="font-mono text-sm md:text-base leading-6 overflow-x-auto">
+        {jsonString.split('\n').map((line, i) => (
+          <div key={i} className="table-row hover:bg-white/5 w-full">
+            <span className="table-cell text-gray-600 px-4 text-right select-none w-12 border-r border-gray-700/50">{i + 1}</span>
+            <span className="table-cell pl-4 whitespace-pre">
+              <span dangerouslySetInnerHTML={{
+                __html: line
+                  .replace(/"(.*?)":/g, '<span class="text-blue-300">"$1"</span>:')
+                  .replace(/: "(.*?)"/g, ': <span class="text-green-300">"$1"</span>')
+                  .replace(/: (\d+)/g, ': <span class="text-orange-300">$1</span>')
+                  .replace(/[\[\]\{\}]/g, '<span class="text-yellow-500">$&</span>')
+              }} />
+            </span>
+          </div>
+        ))}
+      </div>
+    )
+  }
 
   return (
-    <section id="experience" className="section-padding bg-white dark:bg-gray-900">
+    <section id="experience" className="section-padding bg-white dark:bg-gray-900 overflow-hidden">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-            Experience & <span className="gradient-text">Education</span>
+            Career <span className="gradient-text">Source Code</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            My professional journey and academic background that have shaped me into the developer I am today.
+          <p className="text-gray-600 dark:text-gray-400">
+            Explore my background in its natural habitat—the IDE.
           </p>
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Timeline Line */}
-          <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-400 to-purple-400"></div>
-
-          {/* Timeline Items */}
-          <div className="space-y-12">
-            {allItems.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className={`relative flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
-              >
-                {/* Timeline Dot */}
-                <div className={`absolute left-4 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-primary-600 rounded-full border-4 border-white dark:border-gray-900 z-10 ${item.type === 'education' ? 'bg-purple-600' : 'bg-primary-600'
-                  }`}></div>
-
-                {/* Content */}
-                <div className={`ml-12 md:ml-0 md:w-5/12 ${index % 2 === 0 ? 'md:mr-auto md:pr-8' : 'md:ml-auto md:pl-8'
-                  }`}>
-                  <div className="card p-6">
-                    {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex items-center space-x-2 mb-2">
-                        {item.type === 'education' ? (
-                          <FaGraduationCap className="w-5 h-5 text-purple-600" />
-                        ) : (
-                          <FaBriefcase className="w-5 h-5 text-primary-600" />
-                        )}
-                        <span className={`text-sm font-medium px-3 py-1 rounded-full ${item.type === 'education'
-                          ? 'bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300'
-                          : 'bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300'
-                          }`}>
-                          {item.type === 'education' ? 'Education' : 'Work'}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Title & Company */}
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-lg font-semibold text-primary-600 dark:text-primary-400 mb-3">
-                      {item.company}
-                    </p>
-
-                    {/* Period & Location */}
-                    <div className="flex flex-wrap items-center gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400">
-                      <div className="flex items-center space-x-2">
-                        <FaCalendarAlt className="w-4 h-4" />
-                        <span>{item.period}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <FaMapMarkerAlt className="w-4 h-4" />
-                        <span>{item.location}</span>
-                      </div>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
-                      {item.description}
-                    </p>
-
-                    {/* Skills */}
-                    <div className="flex flex-wrap gap-2">
-                      {item.skills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-sm rounded-full"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Download Resume Button */}
+        {/* IDE Window */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="text-center mt-16"
+          className="bg-[#1e1e1e] rounded-xl shadow-2xl border border-gray-700 overflow-hidden flex flex-col md:flex-row h-[600px] max-w-6xl mx-auto"
         >
-          <div className="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8">
-            <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Want to see more details?
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
-              Download my complete resume to get a comprehensive view of my experience,
-              skills, and achievements.
-            </p>
-            <a
-              href="@https://drive.google.com/file/d/1RvjU0vcM-v6W6XjcnvJI8F08BZ4WaQV6/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-flex items-center"
-            >
-              Download Resume
-            </a>
+          {/* Activity Bar (Leftmost strip) */}
+          <div className="w-12 bg-[#333333] flex flex-col items-center py-4 border-r border-black/20 hidden md:flex">
+            <FaCopy className="text-2xl text-white mb-6 cursor-pointer opacity-100" />
+            <FaCog className="text-2xl text-gray-500 mt-auto cursor-pointer hover:text-white transition-colors" />
+          </div>
+
+          {/* Sidebar (Explorer) */}
+          <div className={`${isSidebarOpen ? 'w-full md:w-64' : 'w-0'} bg-[#252526] transition-all duration-300 overflow-hidden flex flex-col border-r border-black/20`}>
+            <div className="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider flex justify-between items-center">
+              <span>Explorer</span>
+              <button onClick={() => setIsSidebarOpen(false)} className="md:hidden text-white">✕</button>
+            </div>
+            <div className="flex-1">
+              <div className="px-2 py-1 flex items-center text-gray-300 cursor-pointer hover:bg-[#2a2d2e] font-bold text-sm">
+                <span className="mr-1">▼</span> PORTFOLIO-V1
+              </div>
+              {files.map(file => (
+                <div
+                  key={file.name}
+                  onClick={() => setActiveFile(file.name)}
+                  className={`px-4 py-1 flex items-center text-sm cursor-pointer border-l-2 ${activeFile === file.name ? 'bg-[#37373d] text-white border-blue-400' : 'text-gray-400 border-transparent hover:bg-[#2a2d2e] hover:text-gray-200'}`}
+                >
+                  <span className="mr-2 text-lg">{file.icon}</span>
+                  {file.name}
+                </div>
+              ))}
+              <div className="px-2 py-1 flex items-center text-gray-300 cursor-pointer hover:bg-[#2a2d2e] font-bold text-sm mt-4">
+                <span className="mr-1">▶</span> DEPENDENCIES
+              </div>
+              <div className="px-4 py-1 text-xs text-gray-500">node_modules</div>
+            </div>
+          </div>
+
+          {/* Main Editor Area */}
+          <div className="flex-1 flex flex-col bg-[#1e1e1e] min-w-0">
+            {/* Tab Bar */}
+            <div className="flex bg-[#252526] overflow-x-auto no-scrollbar">
+              <button
+                onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                className="p-3 text-gray-400 hover:text-white md:hidden"
+              >
+                <FaColumns />
+              </button>
+              {files.map(file => (
+                <div
+                  key={file.name}
+                  onClick={() => setActiveFile(file.name)}
+                  className={`px-4 py-3 flex items-center min-w-fit text-sm cursor-pointer border-t-2 ${activeFile === file.name ? 'bg-[#1e1e1e] text-white border-blue-400' : 'bg-[#2d2d2d] text-gray-500 border-transparent hover:bg-[#2d2d2d]/80'}`}
+                >
+                  <span className="mr-2">{file.icon}</span>
+                  {file.name}
+                </div>
+              ))}
+            </div>
+
+            {/* Breadcrumbs */}
+            <div className="px-4 py-1 text-xs text-gray-500 bg-[#1e1e1e] border-b border-gray-800 flex items-center">
+              src <span className="mx-1">›</span> data <span className="mx-1">›</span> {activeFile}
+            </div>
+
+            {/* Code Content */}
+            <div className="flex-1 overflow-y-auto p-2 custom-scrollbar">
+              {renderContent()}
+            </div>
+
+            {/* Status Bar */}
+            <div className="bg-[#007acc] text-white text-xs px-3 py-1 flex justify-between items-center">
+              <div className="flex gap-4">
+                <span>main*</span>
+                <span>0 errors, 0 warnings</span>
+              </div>
+              <div className="flex gap-4">
+                <span>Ln 12, Col 45</span>
+                <span>UTF-8</span>
+                <span>JSON</span>
+              </div>
+            </div>
           </div>
         </motion.div>
+
+        {/* Traditional Download Button */}
+        <div className="text-center mt-8">
+          <a
+            href="https://drive.google.com/file/d/1RvjU0vcM-v6W6XjcnvJI8F08BZ4WaQV6/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:underline"
+          >
+            <span className="mr-2">📄</span> Prefer a standard resume? Download PDF
+          </a>
+        </div>
       </div>
     </section>
   )
 }
 
-export default Experience
+export default IDEExperience

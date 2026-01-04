@@ -21,15 +21,15 @@ const Footer = () => {
       <div className="container-custom">
         <div className="py-12">
           {/* Main Footer Content */}
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+          <div className="grid md:grid-cols-3 gap-8 mb-8 text-center">
             {/* Brand Section */}
-            <div className="text-center md:text-left">
+            <div className="flex flex-col items-center">
               <h3 className="text-2xl font-bold gradient-text mb-4">Siddh Yadav</h3>
-              <p className="text-gray-400 mb-4 max-w-xs">
+              <p className="text-gray-400 mb-4 max-w-xs mx-auto">
                 Full-Stack Developer & AI/ML Engineer. Building intelligent, production-ready solutions
                 from database to deployment. Let's build something amazing together.
               </p>
-              <div className="flex justify-center md:justify-start space-x-4">
+              <div className="flex justify-center space-x-4">
                 {socialLinks.map((social, index) => (
                   <motion.a
                     key={social.label}
@@ -50,16 +50,17 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div className="text-center md:text-left">
+            <div>
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2">
+              <ul className="space-y-2 inline-block text-center">
                 {['Home', 'About', 'Projects', 'Experience', 'Skills', 'Contact'].map((link, index) => (
                   <motion.li
                     key={link}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                     viewport={{ once: true }}
+                    className="block"
                   >
                     <button
                       onClick={() => {
@@ -78,9 +79,9 @@ const Footer = () => {
             </div>
 
             {/* Contact Info */}
-            <div className="text-center md:text-left">
+            <div>
               <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
-              <div className="space-y-2 text-gray-400">
+              <div className="space-y-2 text-gray-400 flex flex-col items-center">
                 <p>siddhyadav7464@gmail.com</p>
                 <p>+91 7023471442</p>
                 <p>Delhi, India</p>
@@ -122,16 +123,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="bg-black dark:bg-gray-950 py-4">
-        <div className="container-custom">
-          <div className="text-center text-gray-500 text-sm">
-            <p>
-              Built with modern web technologies • Responsive design • Optimized for performance
-            </p>
-          </div>
-        </div>
-      </div>
+
     </footer>
   )
 }
