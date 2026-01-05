@@ -11,20 +11,13 @@ export const useDarkMode = () => {
 }
 
 export const DarkModeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check localStorage for saved preference
-    const saved = localStorage.getItem('darkMode')
-    if (saved !== null) {
-      return JSON.parse(saved)
-    }
-    // Check system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches
-  })
+  // Force dark mode - always enabled
+  const [isDarkMode, setIsDarkMode] = useState(true)
 
   useEffect(() => {
     // Save preference to localStorage
     localStorage.setItem('darkMode', JSON.stringify(isDarkMode))
-    
+
     // Apply dark mode class to document
     if (isDarkMode) {
       document.documentElement.classList.add('dark')
