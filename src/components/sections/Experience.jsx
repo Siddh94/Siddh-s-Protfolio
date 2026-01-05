@@ -212,9 +212,9 @@ const IDEExperience = () => {
         {/* Traditional Download Button */}
         <div className="text-center mt-8">
           <a
-            href="https://drive.google.com/file/d/1RvjU0vcM-v6W6XjcnvJI8F08BZ4WaQV6/view?usp=sharing"
+            href="/Siddh_Yadav_Resume.pdf"
+            download
             target="_blank"
-            rel="noopener noreferrer"
             className="inline-flex items-center text-primary-600 dark:text-primary-400 hover:underline"
           >
             <span className="mr-2">📄</span> Prefer a standard resume? Download PDF

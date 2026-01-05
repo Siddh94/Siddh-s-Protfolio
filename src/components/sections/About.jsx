@@ -159,9 +159,9 @@ const About = () => {
             {/* Download CV Button */}
             <div className="mt-8">
               <a
-                href="https://drive.google.com/file/d/1RvjU0vcM-v6W6XjcnvJI8F08BZ4WaQV6/view?usp=sharing"
+                href="/Siddh_Yadav_Resume.pdf"
+                download
                 target="_blank"
-                rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center"
               >
                 <FaDownload className="inline mr-2" />

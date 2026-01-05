@@ -178,9 +178,9 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8"
             >
               <motion.a
-                href="https://drive.google.com/file/d/1RvjU0vcM-v6W6XjcnvJI8F08BZ4WaQV6/view?usp=sharing"
+                href="/Siddh_Yadav_Resume.pdf"
+                download
                 target="_blank"
-                rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center relative overflow-hidden group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -355,9 +355,9 @@ const Hero = () => {
 
                 <div className="space-y-3">
                   <motion.a
-                    href="https://drive.google.com/file/d/1RvjU0vcM-v6W6XjcnvJI8F08BZ4WaQV6/view?usp=sharing"
+                    href="/Siddh_Yadav_Resume.pdf"
+                    download
                     target="_blank"
-                    rel="noopener noreferrer"
                     className="btn-primary w-full flex items-center justify-center gap-2"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
