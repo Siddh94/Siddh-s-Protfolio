@@ -101,7 +101,7 @@ const Footer = () => {
                 className="text-center md:text-left text-gray-400"
               >
                 <p>
-                  © {new Date().getFullYear()} Siddh Yadav. All rights reserved using React & TailwindCSS
+                  © {new Date().getFullYear()} Siddh Yadav. All rights reserved
                 </p>
               </motion.div>
 
