@@ -89,13 +89,16 @@ const Navbar = () => {
 
                     {/* Dark Mode Toggle & Mobile Menu Button */}
                     <div className="flex items-center space-x-4">
-                        <button
-                            onClick={toggleDarkMode}
-                            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 hover:shadow-lg hover:shadow-primary-500/20"
-                            aria-label="Toggle dark mode"
-                        >
-                            {isDarkMode ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
-                        </button>
+                        {/* Dark mode toggle hidden for Hacker Theme (always dark) */}
+                        <div className="hidden">
+                            <button
+                                onClick={toggleDarkMode}
+                                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 hover:shadow-lg hover:shadow-primary-500/20"
+                                aria-label="Toggle dark mode"
+                            >
+                                {isDarkMode ? <FaSun className="w-5 h-5" /> : <FaMoon className="w-5 h-5" />}
+                            </button>
+                        </div>
 
                         {/* Mobile menu button */}
                         <button

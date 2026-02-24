@@ -57,111 +57,52 @@ const Projects = () => {
   const projects = [
     {
       id: 0,
-      title: 'Roviraa - E-Commerce Platform',
-      description: 'Founded and built a premium e-commerce platform for pure, unadulterated products. Full-stack application with Next.js, Node.js, and MySQL. Features include real-time wishlist sync, dynamic product catalog, user authentication, and optimized performance.',
-      image: '/images/roviraa.png',
-      category: 'startup',
-      tech: ['Next.js', 'Node.js', 'MySQL', 'Prisma', 'TailwindCSS', 'TypeScript'],
+      title: 'Enterprise Network Security Lab',
+      description: 'Built a lab environment simulating enterprise Zscaler deployment with ZIA for internet security and ZPA for private access. Configured SSL inspection policies, URL filtering, and firewall rules. Analyzed network traffic using Wireshark and Zscaler logs.',
+      image: '/images/security-lab.png',
+      category: 'security',
+      tech: ['Zscaler ZIA/ZPA', 'Wireshark', 'PAC Files', 'SSL Inspection', 'Zero Trust'],
       github: 'https://github.com/Siddh94',
-      demo: 'https://www.roviraa.com',
+      demo: '#',
       featured: true
     },
     {
       id: 1,
-      title: 'AnacodicAI - AI Automation Platform',
-      description: 'Co-founded a platform showcasing AI automation products including BoozeBuddy, Feedback AI, Pharmacy Assistant, and AstroAI. Built full-stack app with React, TypeScript, and MySQL. Implemented interactive dashboards, AI chat interfaces, and real-time routing.',
-      image: '/images/anacodicai.png',
-      category: 'startup',
-      tech: ['React', 'TypeScript', 'Node.js', 'MySQL', 'Tailwind CSS', 'Vite'],
+      title: 'Secure Authentication System',
+      description: 'Engineered a production-grade authentication system with JWT token management, bcrypt hashing, and session handling. Implemented RBAC middleware and OWASP security best practices.',
+      image: '/images/auth-system.png',
+      category: 'web',
+      tech: ['Node.js', 'JWT', 'bcrypt', 'REST APIs', 'RBAC', 'OWASP'],
       github: 'https://github.com/Siddh94',
-      demo: 'https://www.anacodicai.com/',
       featured: true
     },
     {
       id: 2,
-      title: 'Astrology Compatibility Tool',
-      description: 'Built a Python AI tool combining NLP-like analysis with astrological scoring. Used Kerykeion for chart generation and deployed on AWS S3 for result storage.',
-      image: '/images/astrology.png',
-      category: 'ai',
-      tech: ['Python', 'Kerykeion', 'NLP', 'AWS S3', 'Streamlit'],
-      github: 'https://github.com/Siddh94/astrology-compatibility-tool',
-      demo: 'https://astrologycompatibilitytool.streamlit.app/',
+      title: 'Roviraa - E-Commerce Platform',
+      description: 'Architected and launched a production-ready e-commerce platform with secure authentication and role-based access. Optimized for performance achieving 90+ Lighthouse score with robust database architecture.',
+      image: '/images/roviraa.png',
+      category: 'web',
+      tech: ['Next.js', 'TypeScript', 'Prisma', 'MySQL', 'JWT'],
+      demo: 'https://www.roviraa.com',
       featured: true
     },
-
-
     {
       id: 3,
-      title: 'Fraud Detection System using Machine Learning',
-      description: 'Built an end-to-end fraud detection pipeline on 10K+ transactions; applied preprocessing, feature engineering, and SMOTE for class imbalance. Achieved 99.82% ROC AUC and integrated SHAP-based interpretability for automated risk scoring.',
-      image: '/images/fraud-detection.png',
-      category: 'ai',
-      tech: ['Python', 'Scikit-learn', 'XGBoost', 'LightGBM', 'Random Forest', 'SHAP', 'SMOTE'],
-      github: 'https://github.com/Siddh94/-Fraud-Detection-System',
-      featured: true
-    },
-    {
-      id: 4,
-      title: 'Local AI Chatbot with Memory Management',
-      description: 'Developed a local chatbot using Python and Hugging Face Transformers (DistilGPT-2) with sliding-window memory to maintain context. Built modular CLI architecture with GPU acceleration and robust error handling.',
-      image: '/images/local-ai-chatbot.png',
-      category: 'ai',
-      tech: ['Python', 'PyTorch', 'Transformers', 'CLI', 'Memory Buffer', 'GPU Acceleration'],
-      github: 'https://github.com/Siddh94/Local-AI-Chatbot-with-Memory-Management',
-      featured: true
-    },
-
-
-    {
-      id: 5,
-      title: 'Emergency & Mental Well-being Platform',
-      description: 'Developed an SOS platform with ReactJS + Spring Boot, supporting live location sharing. Reduced alert delivery latency by 40% with backend optimization.',
-      image: '/images/emergency-platform.png',
-      category: 'web',
-      tech: ['ReactJS', 'Spring Boot', 'MongoDB', 'Real-time', 'Location API'],
-      github: 'https://github.com/Siddh94',
-      featured: true
-    },
-    {
-      id: 6,
       title: 'Helmet & Number Plate Detection',
       description: 'Published research on traffic safety systems using YOLOv5. Built computer vision model for real-time detection and classification.',
       image: '/images/helmet-detection.png',
-      category: 'ai',
-      tech: ['Python', 'YOLOv5', 'OpenCV', 'Computer Vision', 'Research'],
+      category: 'other',
+      tech: ['Python', 'YOLOv5', 'OpenCV'],
       github: 'https://github.com/Siddh94',
       featured: false
-    },
-    {
-      id: 7,
-      title: 'Android Quiz App',
-      description: 'Feature-rich quiz app built with Java/XML and Firebase Firestore. Includes user authentication, real-time scoring, and offline capabilities.',
-      image: '/images/quiz-app.png',
-      category: 'mobile',
-      tech: ['Java', 'Android', 'Firebase', 'XML', 'Real-time'],
-      github: 'https://github.com/Siddh94',
-      featured: false
-    },
-    {
-      id: 8,
-      title: 'User-Centric Product Recommendation System',
-      description: 'Designed personalized recommendation engine with collaborative filtering. Flask API integration enabled real-time recommendations with 17% improved accuracy after tuning.',
-      image: '/images/recommendation-system.png',
-      category: 'ai',
-      tech: ['Python', 'Flask', 'Collaborative Filtering', 'NumPy', 'TensorFlow'],
-      github: 'https://github.com/Siddh94',
-      featured: true
-    },
-
-
+    }
   ]
 
   const categories = [
     { id: 'all', name: 'All Projects', icon: FaCode },
-    { id: 'startup', name: 'My Startups', icon: FaGlobe },
-    { id: 'ai', name: 'AI/ML Projects', icon: FaGlobe },
+    { id: 'security', name: 'Security & Network', icon: FaGlobe },
     { id: 'web', name: 'Web Apps', icon: FaGlobe },
-    { id: 'mobile', name: 'Mobile Apps', icon: FaMobile }
+    { id: 'other', name: 'Other Projects', icon: FaGlobe }
   ]
 
   const filteredProjects = activeFilter === 'all'

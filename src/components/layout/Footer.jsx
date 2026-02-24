@@ -26,8 +26,8 @@ const Footer = () => {
             <div className="flex flex-col items-center">
               <h3 className="text-2xl font-bold gradient-text mb-4">Siddh Yadav</h3>
               <p className="text-gray-400 mb-4 max-w-xs mx-auto">
-                Full-Stack Developer & AI/ML Engineer. Building intelligent, production-ready solutions
-                from database to deployment. Let's build something amazing together.
+                Cyber Security Enthusiast & Zscaler Engineer. Securing enterprise networks and
+                implementing Zero Trust Architecture. Let's secure your perimeter together.
               </p>
               <div className="flex justify-center space-x-4">
                 {socialLinks.map((social, index) => (

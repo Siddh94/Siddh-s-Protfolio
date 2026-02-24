@@ -8,23 +8,24 @@ const CodingTyper = () => {
   const [cursorVisible, setCursorVisible] = useState(true)
 
   const codeSnippet = `
-class AI_Engineer:
+class Security_Engineer:
     def __init__(self):
         self.name = "Siddh Yadav"
-        self.skills = ["Python", "TensorFlow", "React"]
-        self.passion = "Building Intelligent Systems"
+        self.focus = ["Zscaler", "Zero Trust", "Networking"]
+        self.goal = "Enterprise Security"
 
-    def solve_problem(self, challenge):
-        # Analyzing requirements...
-        solution = self.deploy_scalable_app(challenge)
-        return solution
+    def analyze_traffic(self, traffic):
+        # Inspecting SSL traffic...
+        if self.detect_threat(traffic):
+            return self.block_and_log()
+        return "Traffic Allowed ✅"
 
-    def deploy_scalable_app(self, idea):
-        return "🚀 Production Ready MVP"
+    def block_and_log(self):
+        return "Threat Mitigated 🛡️"
 
-me = AI_Engineer()
-print(me.solve_problem("Complex Real-World Issue"))
-# Output: 🚀 Production Ready MVP
+me = Security_Engineer()
+print(me.analyze_traffic("Suspicious Behavior"))
+# Output: Threat Mitigated 🛡️
 `
 
   useEffect(() => {
@@ -93,18 +94,18 @@ const About = () => {
   const features = [
     {
       icon: FaCode,
-      title: 'AI/ML Development',
-      description: 'Expertise in Deep Learning, NLP, and building personalized recommendation systems.'
+      title: 'Zscaler & Security',
+      description: 'Expertise in Zscaler Internet Access (ZIA), Private Access (ZPA), and SSL Inspection.'
     },
     {
       icon: FaPalette,
-      title: 'Research & Innovation',
-      description: 'Published research on traffic safety systems and advancing LLM applications.'
+      title: 'Network & Zero Trust',
+      description: 'Strong foundation in TCP/IP, DNS, HTTP/HTTPS, VPN, and SASE Framework.'
     },
     {
       icon: FaRocket,
-      title: 'Full Stack Solutions',
-      description: 'End-to-end development from ML models to production-ready applications.'
+      title: 'Identity & Access',
+      description: 'Experience with SAML, MFA, Active Directory, and Role-Based Access Control.'
     }
   ]
 
@@ -140,19 +141,19 @@ const About = () => {
             </h3>
             <div className="space-y-4 text-gray-600 dark:text-gray-400">
               <p>
-                I'm a Full-Stack Developer and AI/ML enthusiast with a proven ability to learn fast and deliver results.
-                As the founder of Roviraa, I built an entire e-commerce platform from scratch handling everything from
-                database design to deployment. This hands-on experience has sharpened my skills across the full stack.
+                I am a Cyber Security Enthusiast with hands-on experience in Zscaler within an enterprise environment.
+                My focus lies in troubleshooting internet access issues, SSL inspection policies, and understanding
+                Zero Trust Architecture concepts.
               </p>
               <p>
-                My journey spans multiple roles: developing multi-tenant educational systems at Qvolv Technologies,
-                co-founding AnacodicAI to build AI automation products, and publishing research on computer vision.
-                Each role has pushed me to master new technologies quickly from React and Node.js to Python ML pipelines.
+                As a Security Engineer at Qvolv Technologies, I supported ZIA & ZPA environments for over 500+ users.
+                I regularly analyzed logs, optimized traffic forwarding rules, and assisted with crucial identity
+                integrations like SAML and MFA.
               </p>
               <p>
-                I thrive in environments where I can combine my full-stack development expertise with AI/ML capabilities
-                to build intelligent, production-ready solutions. I'm actively seeking opportunities where I can contribute
-                to innovative projects while continuing to grow as an engineer.
+                I thrive in roles where I can leverage my strong foundation in networking (TCP/IP, DNS, HTTP/HTTPS) to resolve
+                complex access issues. I am actively seeking a Zscaler Engineer or L1 Security Support role to contribute
+                to enterprise security operations.
               </p>
             </div>
 
@@ -228,28 +229,28 @@ const About = () => {
             </h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Core Java</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Internshala</p>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Zero Trust Architecture</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Micro-segmentation & SASE</p>
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Mobile Development</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Coursera</p>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Published Research</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Helmet & Number Plate Detection using YOLOv5</p>
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Web Development</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Coursera</p>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Leadership</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">NCC Cadet – Naval Wing</p>
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Data Structures & Performance</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Coursera</p>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Sports Excellence</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Gold Medalist – Regional Kabaddi</p>
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Published Research Paper</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">Helmet & Number Plate Detection Using YOLOv5</p>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">Network Protocols</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">TCP/IP, HTTP/S, DNS</p>
               </div>
               <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg">
-                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">LeetCode Achievement</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">130+ Problems Solved</p>
+                <h4 className="font-semibold text-gray-900 dark:text-white mb-2">API Security</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">JWT, SAML, OAuth integrations</p>
               </div>
             </div>
           </div>
@@ -265,14 +266,14 @@ const About = () => {
         >
           <div className="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-              Ready to Advance AI Research Together?
+              Ready to Secure Your Network Together?
             </h3>
             <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
-              I'm actively seeking a Research Consultant role to advance user engagement models using LLMs.
-              Whether you have a research opportunity or want to discuss AI/ML projects, let's connect!
+              I'm actively seeking a Zscaler Engineer or L1 Security Support role.
+              Whether you need to enforce Zero Trust Architecture or manage secure access, let's connect!
             </p>
             <a
-              href="mailto:siddhyadav7464@gmail.com?subject=AI/ML Engineer Opportunity Discussion&body=Hi Siddh,%0D%0A%0D%0AI'd like to discuss AI/ML engineering opportunities with you.%0D%0A%0D%0ABest regards,"
+              href="mailto:siddhyadav7464@gmail.com?subject=Zscaler Security Engineer Role Discussion&body=Hi Siddh,%0D%0A%0D%0AI'd like to discuss a Security Engineering opportunity with you.%0D%0A%0D%0ABest regards,"
               className="btn-secondary inline-block"
             >
               Let's Talk

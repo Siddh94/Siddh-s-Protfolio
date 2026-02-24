@@ -119,12 +119,12 @@ const Contact = () => {
                         {/* Additional Info */}
                         <div className="bg-gradient-to-r from-primary-50 to-purple-50 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-6">
                             <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
-                                Let's Build Something Together! 🚀
+                                Ready to Secure Your Network Together? 🛡️
                             </h4>
                             <p className="text-gray-600 dark:text-gray-400 mb-4">
-                                Whether you need a full-stack developer, an AI/ML engineer, or someone to bring your startup idea to life,
-                                I'm ready to dive in and deliver results. From founding Roviraa to building AI products at AnacodicAI,
-                                I've proven I can learn fast and execute.
+                                Whether you need a Zscaler Engineer, an L1 Security Support specialist, or someone to manage your
+                                Zero Trust Architecture, I'm ready to dive in and deliver results. From hands-on experience in
+                                an enterprise environment to troubleshooting complex internet access issues, I've proven I can learn fast and execute.
                             </p>
                             <div className="flex items-center space-x-2 text-sm text-gray-500 dark:text-gray-400">
                                 <div className="w-2 h-2 bg-green-500 rounded-full"></div>

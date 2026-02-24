@@ -10,37 +10,34 @@ const SkillsUniverse = () => {
     // Core (Center)
     { id: 'me', name: 'Siddh', group: 'core', radius: 50 },
 
-    // AI/ML Group
-    { id: 'ai', name: 'AI/ML', group: 'category', radius: 40 },
-    { id: 'tf', name: 'TensorFlow', group: 'ai', radius: 30 },
-    { id: 'pytorch', name: 'PyTorch', group: 'ai', radius: 32 },
-    { id: 'nlp', name: 'NLP', group: 'ai', radius: 28 },
-    { id: 'cv', name: 'OpenCV', group: 'ai', radius: 28 },
-    { id: 'llm', name: 'LLMs', group: 'ai', radius: 35 },
-    { id: 'huggingface', name: 'Hugging Face', group: 'ai', radius: 25 },
+    // Zscaler Group
+    { id: 'zscaler', name: 'Zscaler', group: 'category', radius: 40 },
+    { id: 'zia', name: 'ZIA', group: 'zscaler', radius: 35 },
+    { id: 'zpa', name: 'ZPA', group: 'zscaler', radius: 35 },
+    { id: 'ssl', name: 'SSL Inspect', group: 'zscaler', radius: 30 },
+    { id: 'pac', name: 'PAC Files', group: 'zscaler', radius: 28 },
 
-    // Frontend Group
-    { id: 'fe', name: 'Frontend', group: 'category', radius: 40 },
-    { id: 'react', name: 'React', group: 'fe', radius: 35 },
-    { id: 'next', name: 'Next.js', group: 'fe', radius: 32 },
-    { id: 'ts', name: 'TypeScript', group: 'fe', radius: 28 },
-    { id: 'tailwind', name: 'Tailwind', group: 'fe', radius: 30 },
-    { id: 'three', name: 'Three.js', group: 'fe', radius: 25 },
+    // Networking Group
+    { id: 'net', name: 'Networking', group: 'category', radius: 40 },
+    { id: 'tcp', name: 'TCP/IP', group: 'net', radius: 30 },
+    { id: 'dns', name: 'DNS', group: 'net', radius: 28 },
+    { id: 'vpn', name: 'VPN/IPSec', group: 'net', radius: 32 },
+    { id: 'http', name: 'HTTP/S', group: 'net', radius: 28 },
 
-    // Backend Group
-    { id: 'be', name: 'Backend', group: 'category', radius: 40 },
-    { id: 'node', name: 'Node.js', group: 'be', radius: 32 },
-    { id: 'python', name: 'Python', group: 'be', radius: 38 },
-    { id: 'api', name: 'REST/GraphQL', group: 'be', radius: 28 },
-    { id: 'django', name: 'Django', group: 'be', radius: 25 },
+    // Identity/Auth Group
+    { id: 'auth', name: 'Identity', group: 'category', radius: 40 },
+    { id: 'saml', name: 'SAML', group: 'auth', radius: 32 },
+    { id: 'mfa', name: 'MFA', group: 'auth', radius: 30 },
+    { id: 'rbac', name: 'RBAC', group: 'auth', radius: 28 },
+    { id: 'ad', name: 'Active Dir', group: 'auth', radius: 28 },
 
-    // Data/Tools Group
-    { id: 'data', name: 'Data & Tools', group: 'category', radius: 40 },
-    { id: 'sql', name: 'SQL', group: 'data', radius: 28 },
-    { id: 'mongo', name: 'MongoDB', group: 'data', radius: 28 },
-    { id: 'docker', name: 'Docker', group: 'data', radius: 30 },
-    { id: 'git', name: 'Git', group: 'data', radius: 25 },
-    { id: 'aws', name: 'AWS', group: 'data', radius: 30 }
+    // Tools & Dev Group
+    { id: 'dev', name: 'Tools & Dev', group: 'category', radius: 40 },
+    { id: 'linux', name: 'Linux', group: 'dev', radius: 32 },
+    { id: 'python', name: 'Python', group: 'dev', radius: 28 },
+    { id: 'js', name: 'JS/Node', group: 'dev', radius: 28 },
+    { id: 'wireshark', name: 'Wireshark', group: 'dev', radius: 30 },
+    { id: 'docker', name: 'Docker', group: 'dev', radius: 25 }
   ]
 
   // Initial positions
@@ -93,10 +90,10 @@ const SkillsUniverse = () => {
           // Group attraction
           if (node.group !== 'core' && node.group !== 'category') {
             const groupParent = prevNodes.find(n =>
-              (node.group === 'ai' && n.id === 'ai') ||
-              (node.group === 'fe' && n.id === 'fe') ||
-              (node.group === 'be' && n.id === 'be') ||
-              (node.group === 'data' && n.id === 'data')
+              (node.group === 'zscaler' && n.id === 'zscaler') ||
+              (node.group === 'net' && n.id === 'net') ||
+              (node.group === 'auth' && n.id === 'auth') ||
+              (node.group === 'dev' && n.id === 'dev')
             )
             if (groupParent) {
               fx += (groupParent.x - node.x) * 0.015
@@ -160,10 +157,10 @@ const SkillsUniverse = () => {
     switch (group) {
       case 'core': return 'bg-white dark:bg-gray-900 border-4 border-primary-500'
       case 'category': return 'bg-gray-100 dark:bg-gray-800 border-2 border-primary-400'
-      case 'ai': return 'bg-purple-100 dark:bg-purple-900/50 border border-purple-400'
-      case 'fe': return 'bg-blue-100 dark:bg-blue-900/50 border border-blue-400'
-      case 'be': return 'bg-green-100 dark:bg-green-900/50 border border-green-400'
-      case 'data': return 'bg-orange-100 dark:bg-orange-900/50 border border-orange-400'
+      case 'zscaler': return 'bg-purple-100 dark:bg-purple-900/50 border border-purple-400'
+      case 'net': return 'bg-blue-100 dark:bg-blue-900/50 border border-blue-400'
+      case 'auth': return 'bg-green-100 dark:bg-green-900/50 border border-green-400'
+      case 'dev': return 'bg-orange-100 dark:bg-orange-900/50 border border-orange-400'
       default: return 'bg-gray-200'
     }
   }
@@ -188,10 +185,10 @@ const SkillsUniverse = () => {
             // Draw lines to parent/group
             let parentId = null
             if (node.group === 'category') parentId = 'me'
-            else if (node.group === 'ai') parentId = 'ai'
-            else if (node.group === 'fe') parentId = 'fe'
-            else if (node.group === 'be') parentId = 'be'
-            else if (node.group === 'data') parentId = 'data'
+            else if (node.group === 'zscaler') parentId = 'zscaler'
+            else if (node.group === 'net') parentId = 'net'
+            else if (node.group === 'auth') parentId = 'auth'
+            else if (node.group === 'dev') parentId = 'dev'
 
             if (parentId) {
               const parent = nodes.find(n => n.id === parentId)
@@ -278,16 +275,16 @@ const Skills = () => {
           <div className="bg-white dark:bg-gray-900/50 rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-gray-800 inline-block">
             <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-purple-400"></span> AI/ML & Data
+                <span className="w-3 h-3 rounded-full bg-purple-400"></span> Zscaler
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-blue-400"></span> Frontend
+                <span className="w-3 h-3 rounded-full bg-blue-400"></span> Networking
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-green-400"></span> Backend
+                <span className="w-3 h-3 rounded-full bg-green-400"></span> Identity & Auth
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-orange-400"></span> Tools
+                <span className="w-3 h-3 rounded-full bg-orange-400"></span> Tools & Dev
               </div>
             </div>
           </div>

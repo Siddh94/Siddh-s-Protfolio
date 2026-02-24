@@ -11,24 +11,16 @@ export const useDarkMode = () => {
 }
 
 export const DarkModeProvider = ({ children }) => {
-  // Force dark mode - always enabled
-  const [isDarkMode, setIsDarkMode] = useState(true)
+  // Force dark mode - always enabled for the Hacker theme
+  const isDarkMode = true;
 
   useEffect(() => {
-    // Save preference to localStorage
-    localStorage.setItem('darkMode', JSON.stringify(isDarkMode))
+    // Enforce dark mode class on document
+    document.documentElement.classList.add('dark')
+  }, [])
 
-    // Apply dark mode class to document
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
-  }, [isDarkMode])
-
-  const toggleDarkMode = () => {
-    setIsDarkMode(prev => !prev)
-  }
+  // Dummy toggle to prevent errors from other components
+  const toggleDarkMode = () => { }
 
   const value = {
     isDarkMode,

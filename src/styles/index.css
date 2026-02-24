@@ -51,7 +51,7 @@
   }
 
   .btn-primary:hover {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5), 0 0 40px rgba(0, 255, 65, 0.3);
   }
 
   /* Ripple Effect */
@@ -87,12 +87,12 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-primary-600 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-primary-400 to-green-300 bg-clip-text text-transparent;
   }
 
   /* Glassmorphism Card */
   .card-glass {
-    @apply backdrop-blur-lg bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-xl border border-white/20 dark:border-gray-700/50 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl;
+    @apply backdrop-blur-lg bg-black/80 rounded-xl shadow-xl border border-primary-500/20 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:border-primary-500/50;
   }
 }
 
@@ -131,11 +131,11 @@
 
   0%,
   100% {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.5), 0 0 40px rgba(139, 92, 246, 0.3), 0 0 60px rgba(139, 92, 246, 0.1);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5), 0 0 40px rgba(0, 255, 65, 0.3), 0 0 60px rgba(0, 255, 65, 0.1);
   }
 
   50% {
-    box-shadow: 0 0 30px rgba(139, 92, 246, 0.8), 0 0 60px rgba(139, 92, 246, 0.5), 0 0 90px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 0 30px rgba(0, 255, 65, 0.8), 0 0 60px rgba(0, 255, 65, 0.5), 0 0 90px rgba(0, 255, 65, 0.3);
   }
 }
 
@@ -159,7 +159,7 @@
 }
 
 .animated-gradient-bg {
-  background: linear-gradient(-45deg, #667eea, #764ba2, #6B8DD6, #8E37D7);
+  background: linear-gradient(-45deg, #0f172a, #064e3b, #000000, #065f46);
   background-size: 400% 400%;
   animation: gradient-shift 15s ease infinite;
 }
@@ -191,7 +191,7 @@
   top: 10%;
   left: 10%;
   animation-delay: 0s;
-  background: rgba(139, 92, 246, 0.3);
+  background: rgba(0, 255, 65, 0.3);
 }
 
 .particle-2 {
@@ -200,7 +200,7 @@
   top: 20%;
   right: 20%;
   animation-delay: 1s;
-  background: rgba(99, 102, 241, 0.3);
+  background: rgba(0, 255, 65, 0.4);
 }
 
 .particle-3 {
@@ -209,7 +209,7 @@
   bottom: 30%;
   left: 25%;
   animation-delay: 2s;
-  background: rgba(139, 92, 246, 0.4);
+  background: rgba(0, 255, 65, 0.2);
 }
 
 .particle-4 {
@@ -218,7 +218,7 @@
   top: 40%;
   right: 10%;
   animation-delay: 3s;
-  background: rgba(99, 102, 241, 0.3);
+  background: rgba(0, 255, 65, 0.3);
 }
 
 .particle-5 {
@@ -227,7 +227,7 @@
   bottom: 20%;
   right: 30%;
   animation-delay: 4s;
-  background: rgba(139, 92, 246, 0.5);
+  background: rgba(0, 255, 65, 0.5);
 }
 
 /* Project Card Image Zoom */

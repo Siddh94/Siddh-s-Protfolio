@@ -25,7 +25,7 @@ const MatrixRain = () => {
     const draw = () => {
       ctx.fillStyle = 'rgba(17, 24, 39, 0.1)' // Dark gray for trail
       ctx.fillRect(0, 0, canvas.width, canvas.height)
-      ctx.fillStyle = '#8b5cf6' // Bright purple
+      ctx.fillStyle = '#00ff41' // Bright Matrix green
       ctx.font = `${fontSize}px monospace`
 
       drops.forEach((y, i) => {
@@ -104,14 +104,14 @@ const SYLoader = ({ timeGreeting, funFact }) => (
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 rounded-full border-4 border-t-primary-600 border-r-purple-600 border-b-primary-400 border-l-transparent"
+          className="absolute inset-0 rounded-full border-4 border-t-primary-500 border-r-green-500 border-b-primary-600 border-l-transparent"
         />
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="text-3xl font-bold gradient-text"
+            className="text-3xl font-bold text-primary-500"
           >
             SY
           </motion.span>
@@ -195,9 +195,9 @@ const KonamiEasterEgg = () => {
               rotate: Math.random() * 720
             }}
             transition={{ duration: 2, delay: Math.random() * 0.5 }}
-            className="absolute w-3 h-3 rounded-full"
+            className="absolute w-3 h-3 rounded-sm"
             style={{
-              backgroundColor: ['#8b5cf6', '#6366f1', '#ec4899', '#10b981', '#f59e0b'][Math.floor(Math.random() * 5)]
+              backgroundColor: ['#00ff41', '#4ade80', '#16a34a', '#86efac', '#bbf7d0'][Math.floor(Math.random() * 5)]
             }}
           />
         ))}
@@ -206,7 +206,7 @@ const KonamiEasterEgg = () => {
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="bg-gradient-to-r from-primary-600 to-purple-600 text-white px-8 py-6 rounded-2xl shadow-2xl text-center pointer-events-auto"
+          className="bg-gray-900 border border-primary-500 text-white px-8 py-6 rounded-2xl shadow-[0_0_30px_rgba(0,255,65,0.3)] text-center pointer-events-auto"
         >
           <motion.div
             animate={{ rotate: [0, 10, -10, 10, 0] }}
@@ -375,7 +375,7 @@ function App() {
   return (
     <ErrorBoundary>
       <DarkModeProvider>
-        <div className="min-h-screen transition-colors duration-300 relative">
+        <div className="min-h-screen bg-gray-900 text-gray-100 transition-colors duration-300 relative font-mono">
           {/* Matrix Rain (Dark Mode Only) */}
           <MatrixRainWrapper />
 

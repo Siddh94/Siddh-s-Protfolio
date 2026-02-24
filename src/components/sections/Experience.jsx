@@ -9,54 +9,30 @@ const IDEExperience = () => {
   const experienceData = [
     {
       "id": 1,
-      "role": "Founder & Full-Stack Developer",
-      "company": "Roviraa",
-      "period": "Dec 2025 - Present",
-      "stack": ["Next.js", "MySQL", "Prisma", "TypeScript"],
-      "highlights": [
-        "Architected e-commerce platform from scratch",
-        "Designed database schemas & REST APIs",
-        "Implemented real-time wishlist & diverse catalog"
-      ]
-    },
-    {
-      "id": 2,
-      "role": "Software Developer Intern",
+      "role": "Security Engineer – Zscaler",
       "company": "Qvolv Technologies",
-      "period": "Aug 2025 - Present",
-      "stack": ["React.js", "Material-UI", "Multi-tenant Arch"],
+      "period": "2025 - 2026",
+      "stack": ["Zscaler ZIA", "ZPA", "SAML", "Log Analysis", "Zero Trust"],
       "highlights": [
-        "Built full-stack ed-tech management features",
-        "Optimized complex SQL queries",
-        "Integrated multimedia LMS modules"
-      ]
-    },
-    {
-      "id": 3,
-      "role": "AI/ML Developer",
-      "company": "AnacodicAI",
-      "period": "2024 - 2025",
-      "stack": ["Python", "Streamlit", "React", "OpenCV"],
-      "highlights": [
-        "Co-founded AI automation platform",
-        "Built AstroAI & Feedback AI tools",
-        "Managed 6-member engineering team"
+        "Supported ZIA & ZPA environments for 500+ users, ensuring secure access",
+        "Troubleshot PAC file misconfigurations, Client Connector errors, and traffic forwarding",
+        "Assisted in SAML and MFA authentication integrations with identity providers",
+        "Analyzed logs and defined micro-segmentation policies for Zero Trust Architecture"
       ]
     }
   ]
 
   const educationData = [
     {
-      "degree": "B.Tech Computer Science",
+      "degree": "Bachelor of Engineering in Computer Science",
       "institution": "Chandigarh University",
       "period": "2021 - 2025",
-      "gpa": 7.26,
-      "specialization": ["Deep Learning", "NLP", "AI Systems"]
-    },
-    {
-      "paper": "Traffic Safety using YOLOv5",
-      "status": "Published",
-      "domain": "Computer Vision"
+      "cgpa": 7.26,
+      "achievements": [
+        "Published research paper: 'Helmet & Number Plate Detection Using YOLOv5'",
+        "NCC Cadet – Naval Wing",
+        "Gold Medalist – Regional Kabaddi Tournament"
+      ]
     }
   ]
 

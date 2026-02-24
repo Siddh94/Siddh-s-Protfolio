@@ -10,7 +10,7 @@ const Hero = () => {
   ]
 
   // Typing effect
-  const titles = ['Full-Stack Developer', 'AI/ML Engineer', 'Startup Founder']
+  const titles = ['Zscaler Security Engineer', 'Cyber Security Enthusiast', 'Network Support Engineer']
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0)
   const [displayText, setDisplayText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
@@ -166,8 +166,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto lg:mx-0"
             >
-              Building intelligent, production-ready solutions from database to deployment.
-              Founder, developer, and fast learner ready to make an impact at your company.
+              Securing enterprise networks with Zero Trust Architecture, Zscaler ZIA & ZPA deployments, and strong networking fundamentals. Ready to secure your infrastructure.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -264,7 +263,7 @@ const Hero = () => {
               >
                 <img
                   src="/images/passportphoto.png"
-                  alt="Siddh Yadav - AI/ML Engineer"
+                  alt="Siddh Yadav - Security Engineer"
                   className="w-full h-full object-cover pointer-events-none"
                   style={{ objectPosition: 'center 15%' }}
                   onError={(e) => {
